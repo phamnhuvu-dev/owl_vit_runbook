@@ -34,7 +34,5 @@ git clone https://github.com/google-research/big_vision.git /big_vision
 pip install -r /big_vision/big_vision/requirements.txt
 pip install numpy==1.24.4
 
-rm -r .git
-
 cd ..
 mv *.ipynb runbook/ 
