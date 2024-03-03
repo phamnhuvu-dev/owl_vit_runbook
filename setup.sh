@@ -3,10 +3,12 @@ set -e
 
 
 # Remove all files and folders in runbook/ except for .ipynb files
-find runbook/ -mindepth 1 -type d -exec rm -rf {} +
-find runbook/ -type f -not -name "*.ipynb" -exec rm -rf {} +
 mv runbook/*.ipynb . || true
+
 cd runbook
+rm -rf *
+rm -rf .config
+rm -rf .git
 
 # Install additional dependencies
 apt update && apt install -y libgl1-mesa-glx
@@ -28,11 +30,13 @@ pip install jaxlib@https://storage.googleapis.com/jax-releases/cuda12/jaxlib-0.4
 
 
 # Install big_vision, which is needed for the mask head:
-rm -r /big_vision
+rm -r /big_vision || true
 mkdir /big_vision
 git clone https://github.com/google-research/big_vision.git /big_vision
 pip install -r /big_vision/big_vision/requirements.txt
 pip install numpy==1.24.4
 
+rm -rf .git
+
 cd ..
-mv *.ipynb runbook/ 
+mv *.ipynb runbook/ || true
