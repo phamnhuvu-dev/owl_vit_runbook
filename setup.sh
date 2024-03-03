@@ -40,3 +40,8 @@ rm -rf .git
 
 cd ..
 mv *.ipynb runbook/ || true
+
+git clone --depth 1 --branch 0.3.1 https://github.com/ott-jax/ott.git
+# Run the update_unable_run_code.py script to remove the code cells that are not able to run
+python update_unable_run_code.py
+pip install -e ott/
