@@ -1,4 +1,4 @@
-FROM nvcr.io/nvidia/tensorflow:24.01-tf2-py3
+FROM nvcr.io/nvidia/pytorch:24.02-py3
 
 # Copy environment.yml (if found) to a temp location so we update the environment. Also
 # copy "noop.txt" so the COPY instruction does not fail if no environment.yml exists.

@@ -19,8 +19,8 @@ update_file('runbook/scenic/projects/owl_vit/configs/clip_b32.py', 'config.batch
 update_file('runbook/scenic/projects/owl_vit/configs/clip_b32_finetune.py', 'tfds_names = [\'lvis\']', 'tfds_names = [\'coco/2017\']')
 update_file('runbook/scenic/projects/owl_vit/configs/clip_b32_finetune.py', 'config.batch_size = 256', 'config.batch_size = 2')
 
-# Avoid rate limit
-update_file('runbook/scenic/projects/owl_vit/clip/tokenizer.py', 'DEFAULT_BPE_PATH = None', 'DEFAULT_BPE_PATH = \'/root/.cache/scenic/clip/bpe_simple_vocab_16e6.txt.gz\'')
+# # Avoid rate limit
+# update_file('runbook/scenic/projects/owl_vit/clip/tokenizer.py', 'DEFAULT_BPE_PATH = None', 'DEFAULT_BPE_PATH = \'/root/.cache/scenic/clip/bpe_simple_vocab_16e6.txt.gz\'')
 
 # Check if text_key != negative_text_labels
 update_file('runbook/scenic/projects/owl_vit/preprocessing/label_ops.py', 'if text_key in features:', 'if text_key != \'negative_text_labels\' and text_key in features:')

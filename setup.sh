@@ -42,3 +42,4 @@ pip install runbook/
 pip install numpy==1.24.4
 pip install pycocotools==2.0.6
 pip install -U "jax[cuda12_pip]" -f https://storage.googleapis.com/jax-releases/jax_cuda_releases.html
+pip uninstall -y opencv-python
