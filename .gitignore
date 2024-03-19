@@ -160,5 +160,5 @@ cython_debug/
 #.idea/
 
 ott/*
-runbook/*
+scenic_repo/*
 !runbook/*.ipynb

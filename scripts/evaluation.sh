@@ -3,7 +3,7 @@ set -e
 
 export PYTHONPATH="${PYTHONPATH}:/big_vision/"
 
-python -m runbook.scenic.projects.owl_vit.evaluator \
+python -m scenic_repo.scenic.projects.owl_vit.evaluator \
   --alsologtostderr=true \
   --platform=gpu \
   --config=clip_b32 \
@@ -12,3 +12,6 @@ python -m runbook.scenic.projects.owl_vit.evaluator \
   --tfds_name=coco/2017 \
   --data_format=coco \
   --output_dir=/tmp/evaluator
+
+  # --checkpoint_path=gs://scenic-bucket/owl_vit/checkpoints/clip_vit_b32_b0203fc \
+  # --checkpoint_path=/tmp/training/checkpoint_140000 \
