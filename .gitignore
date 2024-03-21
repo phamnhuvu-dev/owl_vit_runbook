@@ -161,4 +161,3 @@ cython_debug/
 
 ott/*
 scenic_repo/*
-!runbook/*.ipynb
