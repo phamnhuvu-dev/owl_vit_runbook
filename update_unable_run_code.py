@@ -16,6 +16,8 @@ update_file('ott/src/ott/initializers/nn/initializers.py', 'rng: jax.random.PRNG
 # Check if text_key != negative_text_labels
 update_file('scenic_repo/scenic/projects/owl_vit/preprocessing/label_ops.py', 'if text_key in features:', 'if text_key != \'negative_text_labels\' and text_key in features:')
 
+update_file('scenic_repo/scenic/projects/owl_vit/clip/tokenizer.py', 'DEFAULT_BPE_PATH = None', 'DEFAULT_BPE_PATH = \'/workspaces/owl_vit_runbook/bpe_simple_vocab_16e6.txt.gz\'')
+
 # Add DecodeCoco class to label_ops.py
 decodeCocoCode = '''
 @dataclasses.dataclass(frozen=True)

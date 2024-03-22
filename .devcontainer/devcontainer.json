@@ -11,7 +11,8 @@
         "all"
     ],
     "mounts": [
-        "source=/tmp/tensorflow_datasets/,target=/root/tensorflow_datasets,type=bind,consistency=cached"
+		// replace /home/phamnhuvu/tensorflow_datasets/ with your local path to the data
+        "source=/home/phamnhuvu/tensorflow_datasets/,target=/root/tensorflow_datasets,type=bind,consistency=cached"
     ]
 
 	// Features to add to the dev container. More info: https://containers.dev/features.

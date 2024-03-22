@@ -1,6 +1,12 @@
 set -x
 set -e
 
+pip install bokeh
+rm -r colabtools || true
+git clone https://github.com/googlecolab/colabtools.git
+cd colabtools
+python setup.py install
+cd ..
 
 # Install additional dependencies
 apt update && apt install -y libgl1-mesa-glx
@@ -30,5 +36,4 @@ pip install -e ott/
 pip install numpy==1.24.4
 pip install pycocotools==2.0.6
 pip install -U "jax[cuda12_pip]" -f https://storage.googleapis.com/jax-releases/jax_cuda_releases.html
-pip install google-colab
 pip uninstall -y opencv-python

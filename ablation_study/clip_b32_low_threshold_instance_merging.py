@@ -5,12 +5,16 @@ Run training:
 python -m scenic.projects.owl_vit.main \
   --alsologtostderr=true \
   --workdir=/tmp/training \
-  --config=scenic/projects/owl_vit/configs/clip_l14.py
+  --config=scenic/projects/owl_vit/configs/clip_b32.py
 
+
+Expected performance:
+LVIS AP:  20.9%
+LVIS APr: 16.9%
 """
 import ml_collections
 
-CANONICAL_CHECKPOINT = 'gs://scenic-bucket/owl_vit/checkpoints/clip_vit_b16_6171dab'
+CANONICAL_CHECKPOINT = 'gs://scenic-bucket/owl_vit/checkpoints/clip_vit_b32_b0203fc'
 
 DETECTION_FEATURES = ('boxes', 'crowd', 'image', 'instance_labels',
                       'instance_text_labels', 'negative_labels',
@@ -78,8 +82,8 @@ def get_config(init_mode='train'):
   config.dataset_configs.num_instances = 100
   config.dataset_configs.max_queries = 100
   config.dataset_configs.max_query_length = 16
-  config.dataset_configs.min_area_fraction = 0.8
-  config.dataset_configs.iou_threshold = 0.9
+  config.dataset_configs.min_area_fraction = 0.6
+  config.dataset_configs.iou_threshold = 0.5
   config.dataset_configs.add_random_negatives = True
   config.dataset_configs.total_num_negatives = 50
   config.dataset_configs.prefetch_to_device = 2
@@ -125,7 +129,7 @@ def get_config(init_mode='train'):
 
   config.model.body = ml_collections.ConfigDict()
   config.model.body.type = 'clip'
-  config.model.body.variant = 'vit_b16'
+  config.model.body.variant = 'vit_b32'
   config.model.body.merge_class_token = 'mul-ln'
   config.model.box_bias = 'both'
 
@@ -144,7 +148,6 @@ def get_config(init_mode='train'):
   config.normalization = 'per_example'  # 'per_example' or 'global'.
 
   # Training.
-  config.trainer_name = 'text_zero_shot_detection'
   config.num_training_steps = 70_000
   config.batch_size = 2
   config.rng_seed = 0
